@@ -39,11 +39,13 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Container(
-            constraints: const BoxConstraints(maxWidth: 450),
+            constraints: const BoxConstraints(maxWidth: 400),
             child: Card(
               elevation: 4,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: Column(
@@ -54,27 +56,38 @@ class _LoginPageState extends State<LoginPage> {
                     const Text(
                       'Sign in to SocialApp',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
                     ),
                     const SizedBox(height: 8),
                     const Text(
                       'Enter your credentials to access your account',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
                     ),
                     const SizedBox(height: 32),
 
                     // Email Field
-                    const Text('Email', style: TextStyle(fontWeight: FontWeight.w500)),
+                    const Text('Email', style: TextStyle(fontWeight: FontWeight.w600)),
                     const SizedBox(height: 8),
                     TextField(
                       decoration: InputDecoration(
                         hintText: 'you@example.com',
-                        prefixIcon: const Icon(Icons.mail_outline, size: 20),
+                        prefixIcon: const Icon(Icons.mail_outline, size: 20, color: Colors.grey),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
                         ),
                         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        filled: true,
+                        fillColor: Colors.grey.shade50,
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -83,10 +96,10 @@ class _LoginPageState extends State<LoginPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('Password', style: TextStyle(fontWeight: FontWeight.w500)),
+                        const Text('Password', style: TextStyle(fontWeight: FontWeight.w600)),
                         GestureDetector(
-                          onTap: () {}, // Add forgot password logic
-                          child: const Text('Forgot?', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
+                          onTap: () {},
+                          child: const Text('Forgot?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
                         ),
                       ],
                     ),
@@ -95,22 +108,26 @@ class _LoginPageState extends State<LoginPage> {
                       obscureText: !_isPasswordVisible,
                       decoration: InputDecoration(
                         hintText: '••••••••',
-                        prefixIcon: const Icon(Icons.lock_outline, size: 20),
+                        prefixIcon: const Icon(Icons.lock_outline, size: 20, color: Colors.grey),
                         suffixIcon: IconButton(
                           icon: Icon(
                             _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                             size: 20,
+                            color: Colors.grey,
                           ),
-                          onPressed: () {
-                            setState(() {
-                              _isPasswordVisible = !_isPasswordVisible;
-                            });
-                          },
+                          onPressed: () => setState(() => _isPasswordVisible = !_isPasswordVisible),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
                         ),
                         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        filled: true,
+                        fillColor: Colors.grey.shade50,
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -123,6 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                        elevation: 0,
                       ),
                       child: const Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
@@ -131,12 +149,12 @@ class _LoginPageState extends State<LoginPage> {
                     // Divider
                     const Row(
                       children: [
-                        Expanded(child: Divider()),
+                        Expanded(child: Divider(color: Colors.grey)),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          child: Text('OR CONTINUE WITH', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: Text('OR CONTINUE WITH', style: TextStyle(fontSize: 11, color: Colors.grey)),
                         ),
-                        Expanded(child: Divider()),
+                        Expanded(child: Divider(color: Colors.grey)),
                       ],
                     ),
                     const SizedBox(height: 24),
@@ -147,10 +165,11 @@ class _LoginPageState extends State<LoginPage> {
                         Expanded(
                           child: OutlinedButton.icon(
                             onPressed: () {},
-                            icon: const Icon(Icons.g_mobiledata, size: 24, color: Colors.black), // Placeholder for Google Logo
-                            label: const Text('Google', style: TextStyle(color: Colors.black)),
+                            icon: const Icon(Icons.android, size: 20, color: Colors.blue), // Placeholder for Google
+                            label: const Text('Google', style: TextStyle(color: Colors.black87)),
                             style: OutlinedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(vertical: 12),
+                              side: BorderSide(color: Colors.grey.shade300),
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                             ),
                           ),
@@ -159,10 +178,11 @@ class _LoginPageState extends State<LoginPage> {
                         Expanded(
                           child: OutlinedButton.icon(
                             onPressed: () {},
-                            icon: const Icon(Icons.code, size: 20, color: Colors.black), // Placeholder for GitHub Logo
-                            label: const Text('GitHub', style: TextStyle(color: Colors.black)),
+                            icon: const Icon(Icons.code, size: 20, color: Colors.black), // Placeholder for GitHub
+                            label: const Text('GitHub', style: TextStyle(color: Colors.black87)),
                             style: OutlinedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(vertical: 12),
+                              side: BorderSide(color: Colors.grey.shade300),
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                             ),
                           ),
@@ -178,7 +198,7 @@ class _LoginPageState extends State<LoginPage> {
                         const Text("Don't have an account? ", style: TextStyle(color: Colors.grey)),
                         GestureDetector(
                           onTap: () {},
-                          child: const Text('Sign up', style: TextStyle(fontWeight: FontWeight.bold)),
+                          child: const Text('Sign up', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
                         ),
                       ],
                     ),
