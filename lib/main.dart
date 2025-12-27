@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                         fillColor: Colors.grey.shade50,
                       ),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 29),
 
                     // Sign In Button
                     ElevatedButton(
