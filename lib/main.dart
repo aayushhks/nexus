@@ -144,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: const Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 25),
 
                     // Divider
                     const Row(
